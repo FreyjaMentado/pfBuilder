@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import bolt from './images/bolt.jpg';
+import blast from './images/blast.jpg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit your mom
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ 
+        display: 'flex', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 100
+      }}>
+      <img src={bolt} alt="Bolt" style={{ height: '256px' }} />
+      <p style={{ margin: '0 10px' }}>is better than</p>
+      <img src={blast} alt="Blast" style={{ height: '256px' }} />
     </div>
+
   );
 }
 
