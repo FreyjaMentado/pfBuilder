@@ -2,8 +2,9 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Select from '@mui/material/Select';
 
-export default function CardRoot({ children, title }) {
+export default function CardSelector({ children, title, value, onChange }) {
 	return (
 		<Card sx={{ 
 			backgroundColor: 'transparent',
@@ -19,10 +20,16 @@ export default function CardRoot({ children, title }) {
 				>
 					{title}
 				</Typography>
-				<Typography> 
+				<Select
+					value={value}
+					onChange={onChange}
+					fullWidth
+					displayEmpty
+				>
 					{children}
-				</Typography>
+				</Select>
 			</CardContent>
 		</Card>
 	);
 }
+
