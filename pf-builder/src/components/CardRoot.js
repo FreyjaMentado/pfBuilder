@@ -7,18 +7,19 @@ export default function CardRoot({ children, title }) {
 	return (
 		<Card sx={{ 
 			backgroundColor: 'transparent',
-			boxShadow: 'none', // Removes the card's drop shadow
+			marginTop: 2,
+			marginRight: 2,
+			marginLeft: 2,
 		}}>
 			<CardContent>
 				<Typography 
 					gutterBottom 
 					variant="h6" 
 					component="div"
-					sx={{ color: '#00ff00' }} // Green color for the title
 				>
 					{title}
 				</Typography>
-				<Typography sx={{ color: '#00ff00' }}> 
+				<Typography> 
 					{children}
 				</Typography>
 			</CardContent>

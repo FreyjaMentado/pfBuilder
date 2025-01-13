@@ -1,24 +1,13 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CardRoot from '../../components/CardRoot';
 
 export default function Equipment() {
 	return (
-		<div>
-			<br/>
-			<Card>
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
-						Equipment
-					</Typography>
-					<Typography variant="body2"  >
-						This site was written in React and is using Material UI for styling. 
-						<br/>
-						Source Code for this website can be found <a href="https://github.com/FreyjaMentado/FreyjaMentado.github.io">here.</a>
-					</Typography>
-				</CardContent>
-			</Card>
-		</div>
+		<CardRoot title={"Equipment"}>
+			<Typography variant="body2"  >
+				Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think
+			</Typography>
+		</CardRoot>
 	);
 }

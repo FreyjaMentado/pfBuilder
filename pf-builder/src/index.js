@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Root from './pages/homePage/Root';
+import Root from './pages/homePage/Home';
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import Navbar from './pages/navBar/NavBar';
 import reportWebVitals from './reportWebVitals';
 import Footer from './pages/footer/FooterComp';
 import Class from './pages/class/Class';
 import Race from './pages/race/Race';
+import Skills from './pages/skills/Skills';
 import Abilities from './pages/abilities/Abilities';
 import Equipment from './pages/equipment/Equipment';
 import Finalize from './pages/finalize/Finalize';
@@ -27,27 +28,31 @@ const router = createHashRouter([
 				path: "/",
 				element: <Root />
 			},
-      {
+			{
 				path: "home",
 				element: <Root />
 			},
-      {
+			{
 				path: "class",
 				element: <Class />
 			},
-      {
+			{
 				path: "race",
 				element: <Race />
 			},
-      {
+			{
 				path: "abilities",
 				element: <Abilities />
 			},
-      {
+			{
+				path: "skills",
+				element: <Skills />
+			},
+			{
 				path: "equipment",
 				element: <Equipment />
 			},
-      {
+			{
 				path: "finalize",
 				element: <Finalize />
 			},
@@ -60,7 +65,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
-    <Footer />
+		<Footer />
 	</React.StrictMode>
 );
 

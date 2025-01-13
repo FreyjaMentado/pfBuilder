@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Outlet } from "react-router-dom";
 
-const pages = ["Home", "Class", "Race", "Abilities", "Equipment", "Finalize"];
+const pages = ["Home", "Class", "Race", "Abilities", "Skills", "Equipment", "Finalize"];
 
 export default function NavBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -26,18 +26,24 @@ export default function NavBar() {
 
 	return (
 		<div>
-			<AppBar 
+			<AppBar
 				position="static"
 				sx={{
 					backgroundColor: '#c9a0dc',
 				}}
 			>
 				<Container maxWidth="xl">
-					<Toolbar disableGutters>
-						<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+					<Toolbar
+						disableGutters
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',  // Centers horizontally
+							width: '100%',
+						}}
+					>
+						<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
 							<IconButton
 								size="large"
-								aria-label="account of current user"
 								aria-controls="menu-appbar"
 								aria-haspopup="true"
 								onClick={handleOpenNavMenu}
@@ -45,6 +51,16 @@ export default function NavBar() {
 							>
 								<MenuIcon />
 							</IconButton>
+							<Typography
+								marginTop={1}
+								marginLeft={1}
+								variant="h5"
+								sx={{
+									color: "#000"
+								}}
+							>
+								Pathbuilder 1E
+							</Typography>
 							<Menu
 								id="menu-appbar"
 								anchorEl={anchorElNav}
@@ -74,23 +90,17 @@ export default function NavBar() {
 								))}
 							</Menu>
 						</Box>
-						<Typography
-							variant="h5"
-							noWrap
-							component="a"
-							href="/"
-							sx={{
-								mr: 2,
-								display: { xs: 'flex', md: 'none' },
-								flexGrow: 1,
-								fontWeight: 300,
-								color: '#000',
-								textDecoration: 'none',
-							}}
-						>
-							Pathbuilder 1E
-						</Typography>
-						<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+						<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+							<Typography
+								marginTop={2}
+								marginRight={1}
+								variant="h5"
+								sx={{
+									color: "#000"
+								}}
+							>
+								Pathbuilder 1E
+							</Typography>
 							{pages.map((page) => (
 								<Button
 									key={page}
@@ -102,21 +112,20 @@ export default function NavBar() {
 									{page}
 								</Button>
 							))}
+
 						</Box>
 					</Toolbar>
 				</Container>
 			</AppBar>
 			<Box sx={{
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				minHeight: "80vh",
+				display: 'flex',
+				flexDirection: 'column',
+				margin: '0 auto',
+				minHeight: '100vh',
+				width: '100%',
+				maxWidth: 600
 			}}>
-				<Box sx={{ 
-					textAlign: "left",
-					}}>
-					<Outlet />
-				</Box>
+				<Outlet />
 			</Box>
 		</div>
 	);
