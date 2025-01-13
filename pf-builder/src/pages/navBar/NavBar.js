@@ -9,12 +9,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const pages = ["Home", "Class", "Race", "Abilities", "Skills", "Equipment", "Finalize"];
 
 export default function NavBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
+	const location = useLocation();
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -37,11 +38,11 @@ export default function NavBar() {
 						disableGutters
 						sx={{
 							display: 'flex',
-							justifyContent: 'center',  // Centers horizontally
+							justifyContent: 'center',
 							width: '100%',
 						}}
 					>
-						<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
+						<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 							<IconButton
 								size="large"
 								aria-controls="menu-appbar"
@@ -55,36 +56,27 @@ export default function NavBar() {
 								marginTop={1}
 								marginLeft={1}
 								variant="h5"
-								sx={{
-									color: "#000"
-								}}
+								sx={{ color: "#000" }}
 							>
 								Pathbuilder 1E
 							</Typography>
 							<Menu
 								id="menu-appbar"
 								anchorEl={anchorElNav}
-								anchorOrigin={{
-									vertical: 'bottom',
-									horizontal: 'left',
-								}}
+								anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
 								keepMounted
-								transformOrigin={{
-									vertical: 'top',
-									horizontal: 'left',
-								}}
+								transformOrigin={{ vertical: 'top', horizontal: 'left' }}
 								open={Boolean(anchorElNav)}
 								onClose={handleCloseNavMenu}
-								sx={{
-									display: { xs: 'block', md: 'none' },
-								}}
+								sx={{ display: { xs: 'block', md: 'none' } }}
 							>
 								{pages.map((page) => (
 									<MenuItem
 										key={page}
 										component='a'
 										href={`#/${page}`}
-										onClick={handleCloseNavMenu}>
+										onClick={handleCloseNavMenu}
+									>
 										<Typography textAlign="center">{page}</Typography>
 									</MenuItem>
 								))}
@@ -95,36 +87,39 @@ export default function NavBar() {
 								marginTop={2}
 								marginRight={1}
 								variant="h5"
-								sx={{
-									color: "#000"
-								}}
+								component="a"
+								href="/"
+								sx={{ color: "#000", textDecoration: 'none' }}
 							>
 								Pathbuilder 1E
 							</Typography>
-							{pages.map((page) => (
-								<Button
-									key={page}
-									onClick={handleCloseNavMenu}
-									component='a'
-									href={`#/${page}`}
-									sx={{ my: 2, color: '#000', display: 'block' }}
-								>
-									{page}
-								</Button>
-							))}
-
+							{pages.map((page) => {
+								// Compare the current location's hash with the page link
+								const isActive = location.pathname === `/${page}`;
+								return (
+									<Button
+										key={page}
+										onClick={handleCloseNavMenu}
+										component='a'
+										href={`#/${page}`}
+										sx={{
+											my: 2,
+											color: isActive ? '#FFF' : '#000',  // Change text color for active state
+											backgroundColor: isActive ? '#7b5ea7' : 'transparent',  // Highlight the active button
+											display: 'block',
+											borderRadius: 1,
+											fontWeight: isActive ? 'bold' : 'normal'  // Optionally add bold font weight for active state
+										}}
+									>
+										{page}
+									</Button>
+								);
+							})}
 						</Box>
 					</Toolbar>
 				</Container>
 			</AppBar>
-			<Box sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				margin: '0 auto',
-				minHeight: '100vh',
-				width: '100%',
-				maxWidth: 600
-			}}>
+			<Box sx={{ display: 'flex', flexDirection: 'column', margin: '0 auto', minHeight: '100vh', width: '100%', maxWidth: 600 }}>
 				<Outlet />
 			</Box>
 		</div>

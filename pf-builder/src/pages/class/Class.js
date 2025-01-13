@@ -1,24 +1,39 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { MenuItem, Typography } from '@mui/material';
+import CardSelector from '../../components/CardSelector';
+import CardRoot from '../../components/CardRoot';
 
 export default function Class() {
+	const [selectedClass, setSelectedClass] = React.useState('');
+
+	const handleClassChange = (event) => {
+		setSelectedClass(event.target.value);
+	};
+
+	const classes = [
+		'Barbarian', 'Bard', 'Cleric', 'Druid',
+		'Fighter', 'Monk', 'Paladin', 'Ranger',
+		'Rogue', 'Sorcerer', 'Wizard'
+	];
+
 	return (
 		<div>
-			<br/>
-			<Card>
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
-						Class
-					</Typography>
-					<Typography variant="body2"  >
-						This site was written in React and is using Material UI for styling. 
-						<br/>
-						Source Code for this website can be found <a href="https://github.com/FreyjaMentado/FreyjaMentado.github.io">here.</a>
-					</Typography>
-				</CardContent>
-			</Card>
+			<CardRoot title={"Class"}>
+				<Typography variant="body2"  >
+					Choose a class
+				</Typography>
+			</CardRoot>
+			<CardSelector
+				title={"Class"}
+				value={selectedClass}
+				onChange={handleClassChange}
+			>
+				{classes.map((cls) => (
+					<MenuItem key={cls} value={cls}>
+						{cls}
+					</MenuItem>
+				))}
+			</CardSelector>
 		</div>
 	);
 }
