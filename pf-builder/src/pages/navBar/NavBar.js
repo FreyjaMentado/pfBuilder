@@ -26,20 +26,21 @@ export default function NavBar() {
 		setAnchorElNav(null);
 	};
 
-	// Get current page index based on URL path
 	const currentIndex = pages.findIndex(page => `/${page.toLowerCase()}` === location.pathname.toLowerCase());
 
-	// Function to navigate to the next page
 	const handleNext = () => {
-		if (currentIndex < pages.length - 1) {
+		if (currentIndex === -1) {
+			navigate(`/${pages[1].toLowerCase()}`);
+		} else if (currentIndex < pages.length - 1) {
 			navigate(`/${pages[currentIndex + 1].toLowerCase()}`);
 		}
 	};
 
-	// Function to navigate to the previous page
 	const handlePrevious = () => {
 		if (currentIndex > 0) {
 			navigate(`/${pages[currentIndex - 1].toLowerCase()}`);
+		} else if (currentIndex === -1) {
+			navigate('/');
 		}
 	};
 
@@ -114,7 +115,6 @@ export default function NavBar() {
 							{pages.map((page) => {
 								const normalizedPath = location.pathname.toLowerCase() === '/' ? '/home' : location.pathname.toLowerCase();
 								const isActive = normalizedPath === `/${page.toLowerCase()}`;
-
 								return (
 									<Button
 										key={page}
@@ -127,13 +127,14 @@ export default function NavBar() {
 											backgroundColor: isActive ? '#7b5ea7' : 'transparent',
 											display: 'block',
 											borderRadius: 1,
-											fontWeight: isActive ? 'bold' : 'normal'
+											fontWeight: isActive ? 'bold' : 'normal',
 										}}
 									>
 										{page}
 									</Button>
 								);
 							})}
+
 						</Box>
 					</Toolbar>
 				</Container>
@@ -155,7 +156,8 @@ export default function NavBar() {
 						height: 40,
 						minWidth: '80px',
 						backgroundColor: currentIndex > 0 ? '#7b5ea7' : '#aaa',
-						marginRight: 1
+						marginRight: 1,
+						marginTop:2
 					}}
 				>
 					Previous
@@ -178,7 +180,8 @@ export default function NavBar() {
 						height: 40,
 						minWidth: '80px',
 						backgroundColor: currentIndex < pages.length - 1 ? '#7b5ea7' : '#aaa',
-						marginLeft: 1
+						marginLeft: 1,
+						marginTop:2
 					}}
 				>
 					Next
