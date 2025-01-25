@@ -9,13 +9,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const pages = ["Home", "Class", "Race", "Abilities", "Skills", "Equipment", "Finalize"];
 
 export default function NavBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -23,6 +24,23 @@ export default function NavBar() {
 
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
+	};
+
+	// Get current page index based on URL path
+	const currentIndex = pages.findIndex(page => `/${page.toLowerCase()}` === location.pathname.toLowerCase());
+
+	// Function to navigate to the next page
+	const handleNext = () => {
+		if (currentIndex < pages.length - 1) {
+			navigate(`/${pages[currentIndex + 1].toLowerCase()}`);
+		}
+	};
+
+	// Function to navigate to the previous page
+	const handlePrevious = () => {
+		if (currentIndex > 0) {
+			navigate(`/${pages[currentIndex - 1].toLowerCase()}`);
+		}
 	};
 
 	return (
@@ -74,7 +92,7 @@ export default function NavBar() {
 									<MenuItem
 										key={page}
 										component='a'
-										href={`#/${page}`}
+										href={`#/${page.toLowerCase()}`}
 										onClick={handleCloseNavMenu}
 									>
 										<Typography textAlign="center">{page}</Typography>
@@ -94,21 +112,22 @@ export default function NavBar() {
 								Pathbuilder 1E
 							</Typography>
 							{pages.map((page) => {
-								// Compare the current location's hash with the page link
-								const isActive = location.pathname === `/${page}`;
+								const normalizedPath = location.pathname.toLowerCase() === '/' ? '/home' : location.pathname.toLowerCase();
+								const isActive = normalizedPath === `/${page.toLowerCase()}`;
+
 								return (
 									<Button
 										key={page}
 										onClick={handleCloseNavMenu}
 										component='a'
-										href={`#/${page}`}
+										href={`#/${page.toLowerCase()}`}
 										sx={{
 											my: 2,
-											color: isActive ? '#FFF' : '#000',  // Change text color for active state
-											backgroundColor: isActive ? '#7b5ea7' : 'transparent',  // Highlight the active button
+											color: isActive ? '#FFF' : '#000',
+											backgroundColor: isActive ? '#7b5ea7' : 'transparent',
 											display: 'block',
 											borderRadius: 1,
-											fontWeight: isActive ? 'bold' : 'normal'  // Optionally add bold font weight for active state
+											fontWeight: isActive ? 'bold' : 'normal'
 										}}
 									>
 										{page}
@@ -119,8 +138,51 @@ export default function NavBar() {
 					</Toolbar>
 				</Container>
 			</AppBar>
-			<Box sx={{ display: 'flex', flexDirection: 'column', margin: '0 auto', minHeight: '100vh', width: '100%', maxWidth: 600 }}>
-				<Outlet />
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					minHeight: '100vh',
+					width: '100%',
+					marginTop: 2
+				}}
+			>
+				<Button
+					variant="contained"
+					onClick={handlePrevious}
+					disabled={currentIndex <= 0}
+					sx={{
+						height: 40,
+						minWidth: '80px',
+						backgroundColor: currentIndex > 0 ? '#7b5ea7' : '#aaa',
+						marginRight: 1
+					}}
+				>
+					Previous
+				</Button>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						width: '100%',
+						maxWidth: 700
+					}}
+				>
+					<Outlet />
+				</Box>
+				<Button
+					variant="contained"
+					onClick={handleNext}
+					disabled={currentIndex >= pages.length - 1}
+					sx={{
+						height: 40,
+						minWidth: '80px',
+						backgroundColor: currentIndex < pages.length - 1 ? '#7b5ea7' : '#aaa',
+						marginLeft: 1
+					}}
+				>
+					Next
+				</Button>
 			</Box>
 		</div>
 	);
