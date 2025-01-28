@@ -5,9 +5,33 @@ import CardRoot from '../../components/CardRoot';
 export default function Equipment() {
 	return (
 		<CardRoot title={"Equipment"}>
-			<Typography variant="body2"  >
-				Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think
-			</Typography>
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
+			Equipment is fuckin huge, good luck sport. will need to store this somewhere else and pass it through with state I think<br />
 		</CardRoot>
 	);
 }

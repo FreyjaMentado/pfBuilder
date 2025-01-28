@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 const pages = ["Home", "Class", "Race", "Abilities", "Skills", "Equipment", "Finalize"];
 
@@ -141,7 +142,7 @@ export default function NavBar() {
 			</AppBar>
 			<Box
 				sx={{
-					display: 'flex',
+					display: { xs: 'none', md: 'flex' },
 					justifyContent: 'center',
 					minHeight: '100vh',
 					width: '100%',
@@ -157,7 +158,7 @@ export default function NavBar() {
 						minWidth: '80px',
 						backgroundColor: currentIndex > 0 ? '#7b5ea7' : '#aaa',
 						marginRight: 1,
-						marginTop:2
+						marginTop: 2
 					}}
 				>
 					Previous
@@ -181,11 +182,68 @@ export default function NavBar() {
 						minWidth: '80px',
 						backgroundColor: currentIndex < pages.length - 1 ? '#7b5ea7' : '#aaa',
 						marginLeft: 1,
-						marginTop:2
+						marginTop: 2
 					}}
 				>
 					Next
 				</Button>
+			</Box>
+			<Box
+				sx={{
+					display: { xs: 'flex', md: 'none' },
+					justifyContent: 'center',
+					minHeight: '100vh',
+					width: '100%',
+					marginTop: 2,
+					position: 'relative',
+				}}
+			>
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						position: 'fixed',
+						bottom: 0, 
+						width: '100%',
+					}}
+				>
+					<Button
+						variant="contained"
+						onClick={handlePrevious}
+						disabled={currentIndex <= 0}
+						sx={{
+							height: 40,
+							width: '50%',
+							backgroundColor: currentIndex > 0 ? '#7b5ea7' : '#aaa',
+						}}
+					>
+						Previous
+					</Button>
+					<Button
+						variant="contained"
+						onClick={handleNext}
+						disabled={currentIndex >= pages.length - 1}
+						sx={{
+							height: 40,
+							width: '50%',
+							backgroundColor: currentIndex < pages.length - 1 ? '#7b5ea7' : '#aaa',
+						}}
+					>
+						Next
+					</Button>
+				</Box>
+
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						width: '100%',
+						maxWidth: 700,
+						marginBottom: '80px', // Ensure content doesn't overlap with the fixed buttons
+					}}
+				>
+					<Outlet />
+				</Box>
 			</Box>
 		</div>
 	);
