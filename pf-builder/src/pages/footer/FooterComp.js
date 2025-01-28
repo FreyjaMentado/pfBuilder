@@ -1,4 +1,6 @@
+// eslint-disable-next-line
 import githubLogoWhite from './github-mark-white.png'
+// eslint-disable-next-line
 import linkedinLogoWhite from './In-White-72.png'
 import githubLogoBlack from './github-mark.png'
 import linkedinLogoBlack from './LI-In-Bug.png'

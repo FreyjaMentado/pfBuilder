@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Box, MenuItem, Typography } from '@mui/material';
 import CardSelector from '../../components/CardSelector';
-import CardRoot from '../../components/CardRoot';
 
 export default function Class() {
 	const [selectedClass, setSelectedClass] = React.useState('');
