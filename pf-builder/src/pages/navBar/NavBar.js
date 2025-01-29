@@ -202,7 +202,7 @@ export default function NavBar() {
 						display: 'flex',
 						justifyContent: 'space-between',
 						position: 'fixed',
-						bottom: 0, 
+						bottom: 0,
 						width: '100%',
 					}}
 				>
@@ -214,6 +214,13 @@ export default function NavBar() {
 							height: 40,
 							width: '50%',
 							backgroundColor: currentIndex > 0 ? '#7b5ea7' : '#aaa',
+							borderRadius: 0, // Removes rounded corners
+							borderRight: '2px solid grey', // Adds grey separator line
+							opacity: 1,
+							'&.Mui-disabled': {
+								backgroundColor: '#aaa',
+								color: '#fff',
+							},
 						}}
 					>
 						Previous
@@ -226,12 +233,18 @@ export default function NavBar() {
 							height: 40,
 							width: '50%',
 							backgroundColor: currentIndex < pages.length - 1 ? '#7b5ea7' : '#aaa',
+							borderRadius: 0, // Removes rounded corners
+							borderLeft: '2px solid grey', // Adds grey separator line
+							opacity: 1,
+							'&.Mui-disabled': {
+								backgroundColor: '#aaa',
+								color: '#fff',
+							},
 						}}
 					>
 						Next
 					</Button>
 				</Box>
-
 				<Box
 					sx={{
 						display: 'flex',

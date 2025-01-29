@@ -16,6 +16,9 @@ export default function FooterComp() {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
+				position: "relative",
+				zIndex: -1,
+				bottom:  { xs: '30px', md: '10px' },
 			}}>
 				<Box sx={{ textAlign: "center" }}>
 					<a
