@@ -1,12 +1,33 @@
 import * as React from 'react';
-import CardRoot from '../../components/CardRoot';
+import { Box, MenuItem, Typography, FormControl, InputLabel } from '@mui/material';
+import Select from '@mui/material/Select';
 
 export default function Abilities() {
+	const [selectedClass, setSelectedClass] = React.useState('');
+
+	const handleChange = (event) => {
+		setSelectedClass(event.target.value);
+	};
+
 	return (
-		<CardRoot title={"Abilities"}>
-			Page to assign abilities to main 6 stats. will need to pull stat info from race and maybe feats and class as well.
-			<br />
-			options for point buy or rolled stats with ability to roll stats in here.
-		</CardRoot>
+		<div>
+			<Box sx={{ marginTop: 2, marginLeft: 2, marginRight: 2 }}>
+				<Typography variant="body2">
+					Ability Scores
+				</Typography>
+				<br />
+				<FormControl fullWidth>
+					<InputLabel>Choose a generation method</InputLabel>
+					<Select
+						label="Choose a generation method"
+						onChange={handleChange}
+					>
+						<MenuItem value={10}>Standard Array</MenuItem>
+						<MenuItem value={20}>Point Buy</MenuItem>
+						<MenuItem value={30}>Manual/Rolled</MenuItem>
+					</Select>
+				</FormControl>
+			</Box>
+		</div>
 	);
 }
